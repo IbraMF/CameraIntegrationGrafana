@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Acceso Restringido</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #111;
+            color: #f55;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .error-box {
+            padding: 20px 40px;
+            border: 2px solid #f55;
+            border-radius: 6px;
+            background: #222;
+            box-shadow: 0 0 12px rgba(255, 0, 0, 0.6);
+        }
+        h1 {
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        p {
+            font-size: 16px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-box">
+        <h1>⚠️ Acceso Restringido</h1>
+        <p>Este intento de login ha sido registrado.</p>
+    </div>
+
+    <script>
+        // Log en la consola del navegador
+        console.warn("Intento de acceso no autorizado detectado en index.html");
+
+        // Opcional: enviar a un endpoint de log si existe en tu backend
+        fetch("api/log", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                event: "unauthorized_access",
+                page: "index.html",
+                time: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                ip: null // aquí podrías capturar IP desde servidor
+            })
+        }).catch(err => console.error("No se pudo enviar el log:", err));
+    </script>
+</body>
+</html>

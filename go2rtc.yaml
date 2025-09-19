@@ -1,0 +1,8 @@
+streams:
+  reolink1: rtsp://user:password@10.0.0.2:1554/Preview_01_sub
+  reolink2: rtsp://user:password@10.0.0.3:1554/Preview_01_sub
+api:
+  static_dir: "web"
+  tls_cert: "C:\\ssl.crt"
+  tls_key: "C:\\ssl.key"
+  tls_listen: ":8888" # default "", enable HTTPS server
